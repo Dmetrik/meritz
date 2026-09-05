@@ -28,7 +28,7 @@
 
   "sections": {
     "$comment": "1부 제품 10개는 항상 켜져 있습니다. 2부 개발 참고 6개만 여기서 끕니다.",
-    "optional": ["data-api", "permissions", "dependencies", "ops", "tech-notes", "sources"]
+    "optional": ["data-api", "permissions", "dependencies", "nfr", "ops", "tech-notes", "sources"]
   },
 
   "review": {

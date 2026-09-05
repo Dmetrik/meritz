@@ -10,7 +10,7 @@
   },
 
   "sections": {
-    "optional": ["data-api", "permissions", "dependencies", "ops", "tech-notes", "sources"]
+    "optional": ["data-api", "permissions", "dependencies", "nfr", "ops", "tech-notes", "sources"]
   },
 
   "review": {

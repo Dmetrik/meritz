@@ -1,0 +1,52 @@
+# 코드 ↔ 스펙 문서 드리프트 점검 (GitLab CI)
+#
+# .gitlab-ci.yml 에 include 하거나 아래 job 을 그대로 복사해서 쓰세요.
+#
+# allow_failure: true 로 두어 파이프라인을 실패시키지 않습니다.
+# 도입 초기에 파이프라인을 빨갛게 만들면 팀은 문서를 고치는 대신 검사를 꺼버립니다.
+
+spec-drift:
+  stage: test
+  image: alpine/git:latest
+  allow_failure: true
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      changes:
+        - src/**/*
+        - app/**/*
+        - api/**/*
+        - prisma/**/*
+        - package.json
+        - .env.example
+  variables:
+    GIT_DEPTH: 0 # last_synced_commit 까지 거슬러 올라가야 합니다
+  script:
+    - |
+      if ! ls docs/specs/*.md >/dev/null 2>&1; then
+        echo "ℹ️  스펙 문서가 없습니다. Claude Code 에서 /product-spec:new 로 만들 수 있습니다."
+        exit 0
+      fi
+
+      drift=0
+      for spec in docs/specs/*.md; do
+        base=$(grep -m1 '^last_synced_commit:' "$spec" | sed 's/last_synced_commit:[[:space:]]*//')
+        [ -z "$base" ] && continue
+
+        if ! git cat-file -e "${base}^{commit}" 2>/dev/null; then
+          echo "⚠️  $spec — 기준 커밋 $base 를 찾을 수 없습니다 (rebase 또는 force push)."
+          drift=1
+          continue
+        fi
+
+        behind=$(git rev-list --count "$base..HEAD")
+        if [ "$behind" -gt 0 ]; then
+          echo "⚠️  $spec — 코드가 $behind 개 커밋 앞서 있습니다. /product-spec:update 를 실행해 주세요."
+          drift=1
+        else
+          echo "✅ $spec — 최신 상태"
+        fi
+      done
+
+      exit $drift
+
+# 더 깊은 점검(엔드포인트·환경변수 대조)은 Claude Code 에서 /product-spec:check 를 실행하세요.

@@ -1,0 +1,17 @@
+{
+  "name": "dmetrik",
+  "owner": {
+    "name": "PO팀"
+  },
+  "metadata": {
+    "description": "사내 표준 Product Spec 문서를 자동으로 작성하고 갱신하는 Claude Code 플러그인 모음"
+  },
+  "plugins": [
+    {
+      "name": "product-spec",
+      "description": "코드베이스에서 사내 표준 양식의 Product Spec 문서를 작성하고, 코드가 바뀌면 사람이 쓴 부분은 보존한 채 갱신합니다. Jira, Confluence, Slack, YouTrack, Notion, Linear, GitHub 연동을 설정으로 골라 끼울 수 있습니다.",
+      "source": "./plugins/product-spec",
+      "category": "productivity"
+    }
+  ]
+}

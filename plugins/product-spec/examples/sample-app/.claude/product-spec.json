@@ -1,0 +1,20 @@
+{
+  "language": "ko",
+  "docsDir": "docs/specs",
+  "specIdPrefix": "CO",
+
+  "integrations": {
+    "tracker": { "type": "none" },
+    "chat": { "type": "none" },
+    "wiki": { "type": "none" }
+  },
+
+  "sections": {
+    "optional": ["data-api", "permissions", "dependencies", "ops", "tech-notes", "sources"]
+  },
+
+  "review": {
+    "owners": [],
+    "ciDriftCheck": false
+  }
+}

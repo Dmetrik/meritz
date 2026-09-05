@@ -1,0 +1,38 @@
+{
+  "$comment": "제품 리포의 .claude/product-spec.json 에 둡니다. 비밀값은 넣지 말고 환경변수 이름만 적으세요. 이 파일은 팀이 공유해야 하므로 .gitignore 에 넣지 않습니다.",
+
+  "language": "ko",
+  "docsDir": "docs/specs",
+  "specIdPrefix": "DM",
+
+  "integrations": {
+    "tracker": {
+      "$comment": "type: jira | youtrack | linear | github | none / mode: mcp | rest | cli | off",
+      "type": "jira",
+      "mode": "mcp",
+      "site": "acme.atlassian.net",
+      "projectKey": "PAY"
+    },
+    "chat": {
+      "$comment": "type: slack | none",
+      "type": "slack",
+      "mode": "mcp",
+      "channel": "#product-spec",
+      "searchChannels": ["#team-payment", "#product-spec"]
+    },
+    "wiki": {
+      "$comment": "type: confluence | notion | none",
+      "type": "none"
+    }
+  },
+
+  "sections": {
+    "$comment": "1부 제품 10개는 항상 켜져 있습니다. 2부 개발 참고 6개만 여기서 끕니다.",
+    "optional": ["data-api", "permissions", "dependencies", "ops", "tech-notes", "sources"]
+  },
+
+  "review": {
+    "owners": ["@po-team"],
+    "ciDriftCheck": true
+  }
+}

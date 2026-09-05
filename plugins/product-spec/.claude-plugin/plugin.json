@@ -1,0 +1,19 @@
+{
+  "name": "product-spec",
+  "version": "1.0.0",
+  "description": "사내 표준 Product Spec 문서 자동 작성 & 갱신. 코드베이스에서 스펙을 추출하고, 사람이 쓴 내용은 보존한 채 코드 변경분만 반영합니다. 이슈 트래커/커뮤니케이션/위키를 설정으로 골라 끼우는 어댑터 구조.",
+  "author": {
+    "name": "PO팀"
+  },
+  "keywords": [
+    "product-spec",
+    "documentation",
+    "prd",
+    "jira",
+    "confluence",
+    "youtrack",
+    "slack",
+    "notion",
+    "linear"
+  ]
+}

@@ -10,7 +10,7 @@
 
 ```bash
 /plugin marketplace add <이 저장소 URL>
-/plugin install product-spec@dmetrik
+/plugin install product-spec@meritz
 ```
 
 로컬에서 먼저 시험해 보려면 URL 대신 이 폴더의 절대 경로를 넣으면 됩니다.
